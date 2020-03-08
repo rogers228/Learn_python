@@ -7,19 +7,17 @@ def main():
     examp_5()
 
 def examp_5():
+    #https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/
     from bs4 import BeautifulSoup
     from urllib.request import urlopen
     import re
     myurl = "https://news.tvbs.com.tw/"
     html = urlopen(myurl).read().decode('utf-8')
-    #print(html)
-    soup = BeautifulSoup(html, features='html.parser') 
-    h2 = soup.find_all('h2') 
-    print(h2)
-    print("\n")
-    for e in h2:
-        print(e.get_text())
-    print("\nexamp_5")
+    soup = BeautifulSoup(html, 'html.parser')
+    #print(soup)
+    for link in soup.find_all('a'):
+        print(link.get('href'))
+
 def examp_4():
     #使用BeautifulSoup + re 可抓取複雜的鏈結
     from bs4 import BeautifulSoup
