@@ -1,0 +1,14 @@
+#使用絕對路徑導入模組
+import importlib.util
+
+def test1():
+    spec = importlib.util.spec_from_file_location('', r'U:\dsprog\autohotkey_excel_save_event\tool_db.py')
+    modules = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modules)
+
+    pjdb = modules.Pjdb()
+    print(pjdb.ger_newid_pj())
+    pjdb.query_test1()
+
+if __name__ == '__main__':
+    test1()
