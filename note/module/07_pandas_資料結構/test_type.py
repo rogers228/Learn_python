@@ -1,0 +1,1 @@
+print(df_g.dtypes) # 所有欄位資料類型

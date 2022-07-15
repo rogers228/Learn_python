@@ -1,0 +1,69 @@
+請先安裝虛擬環境virtualenv
+pip install virtualenv
+	(需連網)
+
+創建虛擬環境
+1.執行cmd
+
+2.切換到專案目錄
+cd /d path
+
+3.創建虛擬環境
+	目前版本會引用公用環境的模組
+	並且需要有連網，會下載其他引用
+virtualenv VENV  
+
+創建虛擬環境(強制不要連網)
+virtualenv --extra-search-dir=D:\06Python\test\module --never-download VENV
+
+目前版本會引用公用環境的模組
+不使用外部庫來建立虛擬環境，這樣會最乾淨(強制不要連網)
+virtualenv --no-site-packages --never-download VENV
+
+4.啟用
+cd /d path\VENV\Scripts
+activate
+	cmd會出現 (VENV)開頭，代表已啟動
+
+5.停用
+可直接關閉或輸入以下
+deactivate
+
+6.在虛擬環境中安裝模組
+先確認虛擬環境是否啟用
+
+(VENV)pip install xxxx
+	(需要連網)
+
+若無法連網，請先下載安裝包
+
+(VENV)pip install D:\06Python\test\module\PyMsgBox-1.0.6.zip
+	(指定安裝包路徑安裝)
+
+7.使用虛擬環境執行py
+cd /d D:\06Python\test\99_test_隨便測試\test_vs\VENV\Scripts
+activate
+python D:\06Python\test\99_test_隨便測試\test_vs\hello.py
+
+8.可將命令存為bat檔，方便執行
+@echo off
+cd /d D:\06Python\test\99_test_隨便測試\test_vs\VENV\Scripts & activate & python D:\06Python\test\99_test_隨便測試\test_vs\hello.py
+
+9.為gui程式，建立使用者快速啟動捷徑
+a.將gui.py 副檔名改為pyw
+
+b.建立runmain.bat，內容如下(意義為啟動虛擬環境後執行該腳本，但是由bat執行會帶出cmd視窗)
+@echo off
+cd /d D:\06Python\test\99_test_隨便測試\test_vs\VENV\Scripts & activate & python D:\06Python\test\99_test_隨便測試\test_vs\tk.pyw
+
+c.建立invisible.vbs，內容如下(意義為執行bat隱藏cmd視窗)
+CreateObject("Wscript.Shell").Run """" & WScript.Arguments(0) & """", 0, False
+
+d.建立runvbscript.bat，內容如下(意義為執行使用wscript執行invisible)
+@echo off
+wscript.exe "D:\06Python\test\99_test_隨便測試\test_vs\invisible.vbs" "D:\06Python\test\99_test_隨便測試\test_vs\runmain.bat"
+
+10.部屬至其他電腦
+a.使用rar壓縮整個資料夾
+b.複製到使用者電腦後解壓縮相同路徑，即可運作
+	若路徑不同則須編輯第9步驟的路徑

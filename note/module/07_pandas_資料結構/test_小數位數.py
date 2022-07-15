@@ -1,0 +1,1 @@
+df_all['rd06_s'] = round(df_all['rd06_s'], 2) #小數2位

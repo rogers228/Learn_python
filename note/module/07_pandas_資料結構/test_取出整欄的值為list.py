@@ -1,0 +1,1 @@
+alis = df['件號'].tolist()

@@ -1,0 +1,1 @@
+df = df.dropna(subset=['屬性碼'])

@@ -1,0 +1,1 @@
+df = df.merge(df_pd, left_on=['品號'], right_on=['MB001'], how='left') #合併

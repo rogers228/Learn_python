@@ -1,0 +1,31 @@
+column 欄
+columnspan 合併欄
+in_ 隸屬於誰(成為誰的子項)
+ipadx 內部填充x
+ipady 內部填充y
+padx 外部填充x
+pady 外部填充y
+row 列
+rowspan 列合併
+sticky 靠哪裡
+
+sticky=tk.NE (top right右上)
+tk.SE (bottom right右下)
+tk.SW (bottom left左下)
+tk.NW (top left左上)
+tk.N+tk.S
+tk.E+tk.W
+tk.N+tk.E+tk.S+tk.W
+
+
+其他方法及函數
+(w=控件)
+w.grid_bbox(column=None, row=None, col2=None, row2=None) 返回 co
+
+w.grid_location(x, y) 返回座標
+w.grid_propagate(0) 不跟隨網格調整大小
+w.grid_forget() 遺忘
+w.grid_remove() 暫時移除
+w.grid() 再度顯示
+w.grid_size() 返回列欄
+w.grid_slaves(row=None, column=None) 返回列欄當中的所有控件列表
