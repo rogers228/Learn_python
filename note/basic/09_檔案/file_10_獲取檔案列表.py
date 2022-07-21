@@ -5,7 +5,6 @@ files = os.listdir(currdir)
 for i in range(len(files)):
     print(files[i])
 
-
 print('-----')
 files_path = [os.path._getfullpathname(x) for x in os.listdir(currdir)]
 
