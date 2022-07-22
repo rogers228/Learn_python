@@ -3,7 +3,7 @@ print('測試')
 
 #方法1
 if True:
-    ys.exit() #正式結束程式  需要導入sys
+    sys.exit() #正式結束程式  需要導入sys
 
 
 #方法2
