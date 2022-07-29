@@ -1,0 +1,1 @@
+total_rows['ColumnID'] = total_rows['ColumnID'].astype(str)
