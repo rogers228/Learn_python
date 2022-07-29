@@ -33,7 +33,7 @@ def test3():
 
     window.close()
 def test2():
-    sg.popup_yes_no('popup_yes_no')  # Shows Yes and No buttons
+    sg.popup_yes_no('popup_yes_no\nfdfsfsdfd\ndsfsfddf')  # Shows Yes and No buttons
 
 def test1():
     sg.theme('SystemDefault')
@@ -41,7 +41,7 @@ def test1():
                 [sg.Text('Enter something on Row 2'), sg.InputText()],
                 [sg.Button('ok'), sg.Button('Cancel')] ]
     w = sg.Window('Window Title', layout, 
-                    size=(600, 400),
+                    size=(500, 100),
                     resizable=True)
     while True:
         event, values = w.read()
@@ -52,5 +52,5 @@ def test1():
         print('You entered ', values[0])
 
 if __name__ == '__main__':
-    test4()
+    test2()
     print('ok')

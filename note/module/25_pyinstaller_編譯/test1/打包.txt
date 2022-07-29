@@ -1,0 +1,9 @@
+# https://pixnashpython.pixnet.net/blog/post/28052204-%E3%80%90pyinstaller%E3%80%91%E7%94%A8pyinstaller%E4%B9%BE%E6%B7%A8%E4%BF%90%E8%90%BD%E6%89%93%E5%8C%85%E4%BD%A0%E7%9A%84.py
+
+cmd 指令
+
+cd /d C:\Users\user\Documents\GitHub\Learn_python\note\module\25_pyinstaller_編譯\test1
+pyinstaller -F sg02_get_computer_name.py -w
+
+
+會在 dist 資料夾下生成exe
