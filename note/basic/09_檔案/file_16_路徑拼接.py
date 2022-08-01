@@ -1,0 +1,1 @@
+xlsfile = os.path.join(self.report_path, self.fileName)
