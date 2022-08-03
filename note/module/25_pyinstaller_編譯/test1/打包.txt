@@ -5,5 +5,7 @@ cmd 指令
 cd /d C:\Users\user\Documents\GitHub\Learn_python\note\module\25_pyinstaller_編譯\test1
 pyinstaller -F sg02_get_computer_name.py -w
 
+pyinstaller -F gui_sav07.py -w
+
 
 會在 dist 資料夾下生成exe
