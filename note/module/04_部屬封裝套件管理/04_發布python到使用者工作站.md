@@ -1,6 +1,7 @@
 ﻿參考網址https://www.readfog.com/a/1636357495152807936
 
-1.下載Python Releases for Windows，使用https://www.python.org/downloads/windows/  
+# 1.下載Python Releases for Windows，使用https://www.python.org/downloads/windows/  
+
 可以選擇所需要的版本，下載是一個壓縮檔，解壓縮到一個資料夾就建立了一個免安裝的環境資料夾  
 
 檢查是否成功  
@@ -9,7 +10,8 @@ CMD到該資料夾，輸入以下回得到python版本，代表建立環境成�
     cd /d C:\Users\user\Documents\Rogers\Temp\python-3.10.6-embed-amd64
     python --version
 
-2.為您的python環境建立pip  
+# 2.為您的python環境建立pip  
+
     使用以下連結可下載get-pip.py  
     將get-pip.py放在 python-3.10.6-embed-amd64 資料夾  
     最後安裝完成後可移除減少檔案大小  
@@ -59,7 +61,8 @@ CMD到該資料夾輸入以下，檢查該環境的pip是否安裝成功，輸�
     .\python -m pip --version
     pip 22.2.2 from C:\Users\user\Documents\Rogers\Temp\python-3.10.6-embed-amd64\lib\site-packages\pip (python 3.10)
 
-3.將該資料夾壓縮為.7z檔案不到10M，為已經有包含PIP的Poython環境，可作為專案初始開發環境  
+#  3.將該資料夾壓縮為.7z檔案不到10M，為已經有包含PIP的Poython環境，可作為專案初始開發環境  
+
 該專案所需要的套件直接安裝在該環境  
 專案資料夾放在上層，或其他位置，使用者不須安裝Python即可執行
 
