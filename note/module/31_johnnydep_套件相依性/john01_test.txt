@@ -4,6 +4,7 @@ johnnydep <套件名稱>
 
 cmd查詢套件相依性
 johnnydep click
+johnnydep PySimpleGUI
 
 cmd查詢所有套件
 python -m pip list
