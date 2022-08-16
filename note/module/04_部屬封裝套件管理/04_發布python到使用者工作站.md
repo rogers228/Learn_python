@@ -1,10 +1,7 @@
 ﻿參考網址https://www.readfog.com/a/1636357495152807936
 
-1.下載Python Releases for Windows
-    https://www.python.org/downloads/windows/
-    可以選擇所需要的版本
-    下載是一個壓縮檔，解壓縮到一個資料夾
-    就建立了一個免安裝的環境資料夾
+1.下載Python Releases for Windows，使用https://www.python.org/downloads/windows/
+可以選擇所需要的版本，下載是一個壓縮檔，解壓縮到一個資料夾就建立了一個免安裝的環境資料夾
 
 檢查是否成功
 CMD到該資料夾，輸入以下回得到python版本，代表建立環境成功可以運行。
