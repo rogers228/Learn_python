@@ -1,5 +1,6 @@
 import os
 currdir = os.getcwd() #當前路徑
+print(currdir)
 file = 'test.html' #檔名
 fullpath = currdir + '\\' + file
 
