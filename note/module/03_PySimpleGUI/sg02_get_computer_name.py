@@ -7,8 +7,7 @@ def test1():
                 [sg.Text('')],
                 [sg.Button('ok')] ]
     w = sg.Window('Python', layout, 
-                    size=(400, 120),
-                    resizable=True)
+                    size=(400, 120))
     while True:
         event, values = w.read()
         if event == sg.WIN_CLOSED or event == 'ok': # if user closes window or clicks cancel
