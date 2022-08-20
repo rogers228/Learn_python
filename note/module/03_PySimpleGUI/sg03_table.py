@@ -38,11 +38,6 @@ def test1():
         )
 
     layout = [[gridview]]
-
-    # popup menu
-    menu = sg.Menu(gridview, tearoff=0)
-    menu.add_command(label="Copy", command=testfunc)
-
     window = sg.Window('Sample excel file',  layout)
 
 
