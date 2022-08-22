@@ -38,16 +38,19 @@ def test1():
         )
 
     layout = [[gridview]]
-    window = sg.Window('Sample excel file',  layout)
-
-
+    # right_click_menu = ['Unused', ['Right', '!&Click', '&Menu', 'E&xit', 'Properties']]
+    popmenu = ['Unused', ['Select']]
+    window = sg.Window('Sample excel file',  layout,
+                        right_click_menu=popmenu)
 
     while True:
         event, values = window.read()
         # print(event, values)
         if event == sg.WIN_CLOSED:
             break
-        if event == '_rowselected_':
+        # if event == '_rowselected_':
+        #     print(values['_rowselected_'][0])
+        if event == 'Select':
             print(values['_rowselected_'][0])
 
 if __name__ == '__main__':
