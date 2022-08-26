@@ -1,9 +1,9 @@
-def test77():
+def test1():
     dic = { 'one':'oneasfasf',
             'two':'twodsffsafd'}
     print(dic)
-    mykey = 'one'
-
+    
+    mykey = 'r'
     if mykey in list(dic.keys()):
         print(dic[mykey])
     else:
@@ -11,3 +11,6 @@ def test77():
 
     # 使用get 輕鬆取值
     print(dic.get(mykey, 'no key'))
+
+if __name__ == '__main__':
+    test1()
