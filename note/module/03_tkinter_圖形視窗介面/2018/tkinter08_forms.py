@@ -45,3 +45,6 @@ class form(tk.Frame):
         
         btn2 = tk.Button(self.master, text = 'cancel', width = 10, command=quit)
         btn2.place(x=160, y=120) 
+
+if __name__ == '__main__':
+    f = form()

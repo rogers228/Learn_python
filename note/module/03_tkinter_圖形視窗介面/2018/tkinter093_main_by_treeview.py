@@ -30,7 +30,7 @@ class form(tk.Frame):
         
     def setapp(self):
         self.master.title('salary 2020') #設置標題
-        self.master.iconbitmap(r'D:\06Python\test\91_icon_圖示\20180303\if_quora_1632524.ico') #改變圖示
+        # self.master.iconbitmap(r'D:\06Python\test\91_icon_圖示\20180303\if_quora_1632524.ico') #改變圖示
         self.master.resizable(0,0) #停用最大化
         self.master.minsize(600, 400) #設定最小size
         center_window(self.master, 600, 400) #視窗置中
