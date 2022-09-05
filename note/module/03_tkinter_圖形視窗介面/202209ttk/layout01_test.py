@@ -96,21 +96,27 @@ def test4():
     # grid 跟隨母
     # configure 對子
 
-    layout0 = ttk.Frame(root, padding=5, width=600, height=400, style='yellow.TFrame')
+    layout0 = ttk.Frame(root, padding=4, width=600, height=400, style='yellow.TFrame')
     layout0.grid(column=0, row=0, sticky=(N, W, E, S)) # E東 W西 S南 N北
     layout0.columnconfigure(0, weight=1) 
     # layout0.rowconfigure(0, weight=1) # layout1_left 不要設定上部
     layout0.rowconfigure(1, weight=1)
-    layout1_top = ttk.Frame(layout0, width=600, height=50, style='red.TFrame')
+    layout1_top = ttk.Frame(layout0, padding=4, width=600, height=50, style='red.TFrame')
     layout1_top.grid(column=0, row=0, sticky=(N,E,W))
     layout1_top.columnconfigure(0, weight=1) 
 
-    layout1_bottom = ttk.Frame(layout0, width=600, height=400-50, style='cyan.TFrame')
+    layout1_bottom = ttk.Frame(layout0, padding=4, width=600, height=400-50, style='cyan.TFrame')
     layout1_bottom.grid(column=0, row=1, sticky=(N,E,W,S))
     layout1_bottom.columnconfigure(0, weight=1) 
 
-    ttk.Label(layout1_top, text="feet").grid(column=0, row=0, sticky=W)
+    label1 = ttk.Label(layout1_top, text="查詢:", font=("Arial", 12))
+    label1.grid(column=0, row=0, sticky=W)
+    # label1.columnconfigure(0, weight=1) 
 
+    entry1 = ttk.Entry(layout1_top, text="", font=("Arial", 12))
+    entry1.grid(column=0, row=0, sticky=(E ))
+    entry1.columnconfigure(1, weight=1) 
     root.mainloop()
+
 if __name__ == '__main__':
     test4()
