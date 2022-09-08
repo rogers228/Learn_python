@@ -1,0 +1,1 @@
+df['MD001'] = df['MD001'].str.strip()

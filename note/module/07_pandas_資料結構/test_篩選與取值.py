@@ -9,6 +9,8 @@ df_w = df.loc[df['ps02'] == 'AA0031'] # 篩選
 df_w = df[df['ps02'].str.contains('AA0031')
 df_w = df[df['件號'].str.contains(s_gno) == True]
 
+單欄位 like '2%'
+df_w = df[df['pdno'].str.contains(r'^2.*')] # 材料件 品號2開頭
 
 多條件
 df_w = df.loc[(df['製造類別'] == 'S')|(df['製造類別'] == 's')] # 篩選

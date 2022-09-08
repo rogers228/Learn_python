@@ -10,6 +10,14 @@ def test1():
     col_s = ['Name','Age','Bud']
     df = pd.DataFrame(lis, columns = col_s) # 建立 DataFrame
     print(df)
-    
+
+def test2():
+    col_s = ['Name','Age','Bud']
+    df = pd.DataFrame(None, columns = col_s) # 建立空白 DataFrame
+    print(df)
+    if len(df.index) == 0:
+        print('df is None')
+
+
 if __name__ == '__main__':
-    test1()
+    test2()
