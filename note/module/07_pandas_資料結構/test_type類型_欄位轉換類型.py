@@ -1,5 +1,5 @@
 total_rows['ColumnID'] = total_rows['ColumnID'].astype(str) # 數字轉文字
-
+df['DataFrame Column'] = df['DataFrame Column'].astype(float) # 文字轉數字
 
 # 文字轉時間
 df['收件日'] =  pd.to_datetime(df['收件日'], format='%Y-%m-%d %H:%M:%S')
