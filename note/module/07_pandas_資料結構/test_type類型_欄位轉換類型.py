@@ -14,3 +14,9 @@ alarm_py_date = alarm_pd_date.to_pydatetime()
 print('# 轉換為 python datetime.date')
 print(alarm_py_date)
 print(type(alarm_py_date))
+
+
+#  type object to numeric
+df_new['SS001'] = pd.to_numeric(df_new['SS001'], errors='coerce')
+df_new['SS002'] = pd.to_numeric(df_new['SS002'], errors='coerce')
+df_new[['SS001', 'SS002']] = df_new[['SS001','SS002']].fillna(value=0) # 空白補0
