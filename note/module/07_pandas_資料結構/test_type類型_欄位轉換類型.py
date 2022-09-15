@@ -15,6 +15,9 @@ print('# 轉換為 python datetime.date')
 print(alarm_py_date)
 print(type(alarm_py_date))
 
+#  時間轉換為文字
+date_columns = ['bn007','bn008']
+df[date_columns] = df[date_columns].astype(str)
 
 #  type object to numeric
 df_new['SS001'] = pd.to_numeric(df_new['SS001'], errors='coerce')

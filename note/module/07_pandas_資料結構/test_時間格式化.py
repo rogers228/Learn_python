@@ -9,3 +9,7 @@
 
 
 last_date = df_w["日期"].max().to_period('D') #時間戳 轉 日期
+
+#  時間轉換為文字
+date_columns = ['bn007','bn008']
+df[date_columns] = df[date_columns].astype(str)
