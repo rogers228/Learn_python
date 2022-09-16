@@ -15,6 +15,5 @@ df.insert(len(df.columns), '檢查結果', ['']*len(df.index), True) #插在最�
 是否允許重複值
 
 
-
 # 以欄位計算結果 增加欄位
 df_all['hday'] = (df_all['ps23'] - df_all['SUM_sw06'])
