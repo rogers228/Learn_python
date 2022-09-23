@@ -1,0 +1,1 @@
+df[['MA001']] = df[['MA001']].apply(lambda e: e.str.strip())
