@@ -1,7 +1,5 @@
 
 
-
-
 df.sort_values(by=['col1']) #單一欄位排序
 
 df.sort_values(by=['col1', 'col2']) #多欄位排序
