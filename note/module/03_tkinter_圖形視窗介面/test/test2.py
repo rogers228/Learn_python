@@ -18,18 +18,13 @@ def test1():
     center_y = int(screen_height/2 - window_height / 2)
     root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
     
-    # root.resizable(False, False) # 禁止 調整大小resize
-    root.minsize(200, 50)  # 最小視窗
-    # root.maxsize(min_height, max_height) # 最大視窗
+    mycanvas = Canvas(root, width=window_width, height=window_height)
+    mycanvas.place(x=0, y=0)
+    mycanvas.create_line(20, 20, 280, 20)
+    mycanvas.create_rectangle(210, 10, 290, 100, fill='red')
+    mycanvas.create_oval(250, 150, 300, 300, fill='red') # 圓形
 
-    # root.attributes('-alpha',0.5) # 半透明
-    # root.attributes('-topmost', 1) #最上層顯示
-    
-    # 移動圖層
-    # root.lift(another_window)
-    # root.lower(another_window)
-
-    root.iconbitmap('./Form.ico') # 變更圖示
+    root.resizable(False, False) # 禁止 調整大小resize
     root.mainloop()
 
 if __name__ == '__main__':
