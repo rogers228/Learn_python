@@ -1,0 +1,1 @@
+if isinstance(myVar, int)

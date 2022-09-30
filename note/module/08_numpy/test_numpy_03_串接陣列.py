@@ -13,10 +13,19 @@ def test3():
     # [1. 2. 3. 4. 5. 6.]
     
 def test4():
-    # 以知頭尾 及元素數量 建立陣列
+    # 以知頭尾 及元素數量(間隔為被動值) 建立陣列
     np_arr = np.linspace(0.0, 2.5, num=33)
     print(np_arr)
     print(type(np_arr))
     print(type(np_arr[0]))
+
+def test5():
+    # 以知頭尾 及間隔 (元素數量為被動值) 建立陣列
+    np_arr = np.arange(0,100,2) 
+    print(np_arr)
+    print(type(np_arr))
+    print(type(np_arr[0]))
+
+
 if __name__ == '__main__':
-    test4()
+    test5()
