@@ -10,5 +10,6 @@ def test1():
     print(f'1出現{lis2.count(1)}次')
     print(f'2出現{lis2.count(2)}次')
     print(f'3出現{lis2.count(3)}次')
+    
 if __name__ == '__main__':
     test1()
