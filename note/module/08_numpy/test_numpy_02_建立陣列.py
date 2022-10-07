@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def test2():
     #使用預設值 建立陣列
@@ -33,5 +34,13 @@ def test1():
     print(np5)
     print(np5[9]) # 索引取值
 
+def test3():
+    # 二維陣列
+    arr = np.array([[10.2, 'yo'], [4, 'bro'],
+                    [4, 'low'], [1, 'NumPy']])
+    df = pd.DataFrame(arr)
+    print(df)
+    print(df.dtypes)
+
 if __name__ == '__main__':
-    test2()
+    test3()

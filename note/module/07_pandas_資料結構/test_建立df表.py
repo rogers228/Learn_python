@@ -18,6 +18,11 @@ def test2():
     if len(df.index) == 0:
         print('df is None')
 
-
+def test3():
+    data = {
+        'Name': ['Tom', 'Joseph', 'Krish', 'John'],
+        'Age': [20, 21, 19, 18]}
+    df = pd.DataFrame(data)
+    print(df)
 if __name__ == '__main__':
-    test2()
+    test3()

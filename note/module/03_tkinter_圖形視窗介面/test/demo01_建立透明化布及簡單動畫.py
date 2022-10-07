@@ -36,7 +36,7 @@ class TEST_G():
         while True:
             self.show_element(i)
             self.root.update()
-            time.sleep(0.1)
+            time.sleep(0.07)
             i += 1
             if i > len(self.lis_x)-1: i = 0
 
