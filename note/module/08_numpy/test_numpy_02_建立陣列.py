@@ -38,9 +38,12 @@ def test3():
     # 二維陣列
     arr = np.array([[10.2, 'yo'], [4, 'bro'],
                     [4, 'low'], [1, 'NumPy']])
-    df = pd.DataFrame(arr)
-    print(df)
-    print(df.dtypes)
+    print(type(arr))
+    print(arr)
+    print(arr[0,0].dtype)
+    # df = pd.DataFrame(arr)
+    # print(df)
+    # print(df.dtypes)
 
 if __name__ == '__main__':
     test3()
