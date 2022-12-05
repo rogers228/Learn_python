@@ -4,3 +4,7 @@
 
 # get javascript function name
 # https://regex101.com/r/pJ9pF5/1
+
+
+#語法說明
+# https://www.runoob.com/regexp/regexp-syntax.html
