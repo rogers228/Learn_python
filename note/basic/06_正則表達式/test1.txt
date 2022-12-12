@@ -7,3 +7,10 @@ dsfsdf
 3fsafdas
 # include{{ 456_pyfile.py }}
 4dfasf
+# {{ content }}
+1.dfasfdas
+
+2.dsafasdf
+# {{ end content  }}
+dsafasdf
+dafasdfa
