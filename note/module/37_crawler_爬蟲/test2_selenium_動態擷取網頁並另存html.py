@@ -1,5 +1,5 @@
 # 安裝模組
-# python -m pip selenium
+# python -m pip install selenium
 # python -m pip install webdriver-manager
 
 from selenium import webdriver

@@ -15,7 +15,11 @@ def test1():
     html_body = soup.body # 抓曲tag
     # print(html_body)
 
-    html_1 = soup.find(id="gn_parent_2_spec_2") # byid
+    html_1 = soup.find(id="gn_parent_2_spec_2") # byid 
+    # .findChildren
+    soup.find("li", { "class" : "test" }) 
+
+
     print(html_1)
     # soup.select_one('.stylelistrow') # by_class
     # soup.select('.stylelistrow')
