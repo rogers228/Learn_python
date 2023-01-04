@@ -2,6 +2,9 @@
 # python -m pip install beautifulsoup4
 from bs4 import BeautifulSoup
 
+# python -m pip install soup2dict
+from soup2dict import convert
+
 # beautifulsoup4_讀取html_bytag_byid_byclass
 def test1():
     with open('temp.html', mode='r', encoding='utf-8') as f:
