@@ -2,8 +2,8 @@
 import dirsync
 
 def main():
-    source_path = r'C:\Users\user\Documents\GitHub\Learn_python\note\module\32_dirsync_檔案同步\dirsync01_test\sourcedir'
-    target_path = r'C:\Users\user\Documents\Rogers\Temp\sync_test'
+    source_path = r'C:\Users\USER\Documents\learn-front-end\test_code\20230121_react\11_template'
+    target_path = r'C:\Users\USER\Documents\learn-front-end\test_code\20230121_react\46_web\template'
 
     args = {
         'purge': True,   # 同步清除
@@ -11,7 +11,7 @@ def main():
         'ignore' : ['\.git', '\.gitignore', 'config.py', 'test.*'] # 忽略
     }
     dirsync.sync(source_path, target_path, 'sync', **args)
-    print('finish')
+    print('sync template is finish')
 
 if __name__ == '__main__':
     main()
