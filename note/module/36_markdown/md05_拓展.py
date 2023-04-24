@@ -108,5 +108,29 @@ def test4():
     html = markdown.markdown(md_str, extensions=extensions) 
     print(html)
 
+
+def test5():
+    # 程式碼片段
+    md_str = multext("""
+        # hi
+
+        this is a image
+
+        ```
+        this is code
+        ```
+
+        """)
+
+    print(md_str)
+    print('-----------------')
+    
+    # html = markdown.markdown(md_str) # 不使用拓展
+    extensions = []
+    # extensions.append(TableExtension(use_align_attribute=True))  # 轉換table
+    extensions.append('fenced_code') # 程式碼片段
+
+    html = markdown.markdown(md_str, extensions=extensions) 
+    print(html)
 if __name__ == '__main__':
-    test4()
+    test5()
