@@ -1,13 +1,13 @@
 from io import StringIO
 import markdown
 from markdown.extensions.tables import TableExtension
+import re
 
 # table 表格
 # abbr  HTML abbr tag 工具說明  屬標移動到該處停留一會，會出現工具說明
 # Attribute Lists 允許在md中使用特殊語法 輸出html屬性標籤 例如id, class, a href 於前端應用有相當大的助益
 # Definition Lists
 # Footnotes 註腳 例如本文中有 注1 注2  在本文底可以找到註解
-
 
 def test1():
     # 使用讀取md檔， 直接讀取檔
@@ -132,5 +132,32 @@ def test5():
 
     html = markdown.markdown(md_str, extensions=extensions) 
     print(html)
+
+
+def test6():
+    # 內連屬性 以圖片為例
+    # attr應緊接 不可空格
+    md_str = multext("""
+        # hi
+
+        this is a image
+
+
+        - [ ]test
+        - [x] 已完成的事項2
+        - [ ] 待辦事項3
+        """)
+
+    print(md_str)
+    print('-----------------')
+    
+    # html = markdown.markdown(md_str) # 不使用拓展
+    extensions = []
+    # extensions.append(TableExtension(use_align_attribute=True))  # 轉換table
+    extensions.append('attr_list') # 轉換屬性
+
+    html = markdown.markdown(md_str, extensions=extensions) 
+    print(html)
+
 if __name__ == '__main__':
-    test5()
+    test6()
