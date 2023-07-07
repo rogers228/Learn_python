@@ -1,0 +1,16 @@
+{
+    // JSON5 支援 JavaScript 的註解
+    "name": "John",  // 字串可以使用單引號或雙引號
+    "age": 30,  // 數字可以是整數或浮點數
+    "isStudent": true,  // 布林值可以是 true 或 false
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "USA"
+    },
+    "tags": [  // 陣列可以使用尾逗號
+        "apple",
+        "banana",
+        "orange",
+    ]
+}
