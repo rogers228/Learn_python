@@ -7,3 +7,6 @@ def test_kw(**kwargs):
 
 def test42():
     test_kw(a=1, b=2,c='456')
+
+if __name__ == '__main__':
+    test42()
