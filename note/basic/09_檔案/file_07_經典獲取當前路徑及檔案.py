@@ -25,3 +25,13 @@ print(sname_a)
 sname_b = os.path.basename(sys.argv[0]).split('.')[1] #當前檔案附檔名
 print(sname_b)
 '''
+
+
+# 取得所有附檔名為js的檔案
+from glob import glob
+currdir = os.getcwd() #當前路徑
+def test2():
+    path_public = os.path.join(currdir, 'public')
+    print(path_public)
+    py_files = glob(os.path.join(path_public, "*.js"))
+    print(py_files)
