@@ -7,3 +7,7 @@ print(mydate)
 endDate = mydate + timedelta(days = 1) # 加1天
 print(endDate)
 
+
+
+from dateutil.relativedelta import relativedelta
+date_end_datetime = date_start_datetime + relativedelta(years=10) # 加10年
