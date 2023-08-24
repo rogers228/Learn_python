@@ -1,9 +1,11 @@
+import os
 import svgwrite
 import ast
 import math
 import cairosvg
 from PIL import Image
 
+currdir = os.getcwd() #當前路徑
 file_svg = 'test.svg'
 output_file = 'output.png'
 output_with_transparency = 'output_with_transparency.png'
@@ -85,6 +87,27 @@ def replace_color_with_transparency(image, target_color, threshold=50):
     img.putdata(new_img_data)
     return img
 
+# 調整大小後另存
+def resize_and_save(input_path, output_path, tuple_size):
+    img = Image.open(input_path)
+    resized_img = img.resize(tuple_size)
+    resized_img.save(output_path)
+    print(f"{input_path} resize saveas finished.")
+
+# 輸出全部
+def ouput_all():
+    a512 = os.path.join(currdir, 'favicon', 'android-chrome-512x512.png')
+    a192 = os.path.join(currdir, 'favicon', 'android-chrome-192x192.png')
+    apple_touch = os.path.join(currdir, 'favicon', 'apple-touch-icon.png')
+    favicon32 = os.path.join(currdir, 'favicon', 'favicon-32x32.png')
+    favicon16 = os.path.join(currdir, 'favicon', 'favicon-16x16.png')
+    resize_and_save(output_with_transparency, a512, (512,512))
+    resize_and_save(output_with_transparency, a192, (192,192))
+    resize_and_save(output_with_transparency, apple_touch, (180,180))
+    resize_and_save(output_with_transparency, favicon32, (32,32))
+    resize_and_save(output_with_transparency, favicon16, (16,16))
+    print("ouput all png finished.")
+
 def svg2png():
     cairosvg.svg2png(url=file_svg, write_to=output_file)
     image = Image.open(output_file)
@@ -117,42 +140,29 @@ def create_svg():
         size=(svg_w, svg_h),
         fill_color=transparent)
 
-    draw_circle(dwg,
-        position = (svg_w/2, svg_h/2),
-        radius = 0.8*svg_w/2,
-        fill_color ='green')
-
-    draw_polygon(dwg, 
-        points=[scale2((50, 10),wh), scale2((90, 90),wh), scale2((10, 90),wh)],
-        fill_color='blue')
-
-    draw_sector(dwg,
-        center = (svg_w/2, svg_h/2),
-        radius = 0.35 * svg_w,
-        start_angle = 45,
-        end_angle = 135,
-        fill_color='yellow')
-
-    draw_ellipse(dwg, 
-        position = (svg_w/2, svg_h/2),
-        tuple_r = (200, 100),
-        fill_color='red')
-
     with open('points.txt', 'r', encoding='utf-8') as f:
         points_string = f.read()
     points = scale_points(ast.literal_eval(points_string))
-    draw_curve(dwg,
+    draw_polygon(dwg, 
         points=points,
-        color='black',
-        width=1)
+        fill_color='#F80')
 
     draw_text(dwg,
         content='S',
-        position=(20,300),
-        color='black',
-        size=80,
-        family='Arial',
-        weight=400,
+        position=(svg_w*0.21,svg_h*0.86),
+        color='gray',
+        size= 0.85*svg_w,
+        family='Lucida Bright',
+        weight=600,
+        style='italic')
+
+    draw_text(dwg,
+        content='S',
+        position=(svg_w*0.16,svg_h*0.85),
+        color='#FFF',
+        size= 0.85*svg_w,
+        family='Lucida Bright',
+        weight=600,
         style='italic')
 
     dwg.save()
@@ -161,6 +171,7 @@ def create_svg():
 def main():
     create_svg()
     svg2png()
+    ouput_all()
 
 def test1():
     with open('points.txt', 'r', encoding='utf-8') as f:

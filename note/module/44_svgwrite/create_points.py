@@ -1,6 +1,5 @@
 import math
 import matplotlib.pyplot as plt
-from itertools import cycle
 
 # 依照圓弧求線上點座標
 def calculate_points_on_arc(center, radius, start_angle, end_angle, num_points, mode=0):
@@ -26,12 +25,10 @@ def points2draw(points):
     x = [p[0] for p in points]
     y = [100-p[1] for p in points]
     plt.figure(figsize=(500/80, 500/80))
-    # plt.plot(x, y, marker='o', linestyle='-')
+    plt.scatter(x, y, marker='o', color='gray')  # 使用 scatter 绘制点
 
-    colors = cycle(['red', 'yellow', 'green'])  # 使用 itertools.cycle 创建颜色迭代器
-    for i in range(len(x) - 1):
-        color = next(colors) 
-        plt.plot([x[i], x[i+1]], [y[i], y[i+1]], marker='o', linestyle='-', color=color)
+    for i, (xi, yi) in enumerate(zip(x, y)):
+        plt.text(xi+2, yi-2, str(i), color='red', fontsize=10, ha='center', va='center')  # 在点旁边加上索引
 
     plt.xlim(0, 100); plt.ylim(0, 100)
     plt.title('points'); plt.xlabel('x'); plt.ylabel('y')
@@ -39,17 +36,31 @@ def points2draw(points):
 
 def test1():
     ps = []
-    line = [(10, 16),(36, 16)]; ps += line
+    line = [(8, 14),(36, 14)]; line.pop(); ps += line
     arc = calculate_points_on_arc(
-        center = (50, 16),
-        radius = -14,
-        start_angle = 180,
+        center = (50, 14),
+        radius = 14,
+        start_angle = -180,
         end_angle = 0,
-        num_points = 10, mode=1); ps += arc
-    # points2txt(ps)
-    points2draw(ps)
+        num_points = 20); arc.pop(); ps += arc
+    line = [(64, 14),(92, 14), (92, 78)]; line.pop(); ps += line
+    arc = calculate_points_on_arc(
+        center = (72, 78),
+        radius = 20,
+        start_angle = 0,
+        end_angle = 90,
+        num_points = 16); arc.pop(); ps += arc
+    line = [(72, 98),(8, 98),(8, 70)]; line.pop(); ps += line
+    arc = calculate_points_on_arc(
+        center = (8, 56),
+        radius = -14,
+        start_angle = 270,
+        end_angle = 90,
+        num_points = 20); ps += arc
 
-
+    points2txt(ps) # ouput to text
+    # points2draw(ps) # 預覽點
+    
 
 if __name__ == '__main__':
     test1()
