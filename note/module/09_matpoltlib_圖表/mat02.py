@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 x = np.linspace(-3, 3, 50) #-1~1 個數50
+print(x)
 y1 = 2*x + 1
 y2 = x** 2
 

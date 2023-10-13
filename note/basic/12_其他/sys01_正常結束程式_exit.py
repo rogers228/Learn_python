@@ -10,10 +10,7 @@ if True:
 if True:
     raise SystemExit  #正式結束程式 而不需要導入sys
 
-
 print('若離開就看不到了')
-
-
 
 
 # 由子線程 結束全部
