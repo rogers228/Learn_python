@@ -21,6 +21,9 @@ class MainWindow(QMainWindow):
         save_action = QAction("Save", self)
         exit_action = QAction("Exit", self)
 
+        new_action.triggered.connect(self.test)
+        exit_action.triggered.connect(self.close)
+        
         # 將動作添加到文件功能表
         file_menu.addAction(new_action)
         file_menu.addAction(open_action)
@@ -31,10 +34,10 @@ class MainWindow(QMainWindow):
 
         # 將退出動作添加到文件功能表
         file_menu.addAction(exit_action)
+        
 
-        # 連接退出動作到關閉應用程式的函數
-        exit_action.triggered.connect(self.close)
-
+    def test(self):
+        print('test')
 def main():
     app = QApplication(sys.argv)
     window = MainWindow()
