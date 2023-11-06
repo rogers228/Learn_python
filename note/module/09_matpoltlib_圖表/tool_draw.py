@@ -1,5 +1,7 @@
 # 各種繪圖計算
 import numpy as np
+import math
+import matplotlib.pyplot as plt
 
 def circle_border(center, radius, angle_radian):
     # 求圓上座標
@@ -106,3 +108,28 @@ def th_involute(center, lis_angle_radian, radius):
     return lis_result
 
 
+def calculate_points_on_arc(center, radius, start_angle, end_angle, num_points):
+    # 依照圓弧求線上點座標
+    # mode 特殊調整 1
+    points = []
+    angle_increment = (end_angle - start_angle) / (num_points - 1)
+    for i in range(num_points):
+        angle = math.radians(start_angle + i * angle_increment)
+        x = round((center[0] + radius * math.cos(angle)),3)
+        y = round((center[1] + radius * math.sin(angle)),3)
+        points.append((x, y))
+    return points
+
+def points2draw(points):
+    # 繪製連續曲線
+    x = [p[0] for p in points]
+    y = [100-p[1] for p in points]
+    plt.figure(figsize=(500/80, 500/80))
+    plt.scatter(x, y, marker='o', color='gray')  # 使用 scatter 绘制点
+
+    for i, (xi, yi) in enumerate(zip(x, y)):
+        plt.text(xi+2, yi-2, str(i), color='red', fontsize=10, ha='center', va='center')  # 在点旁边加上索引
+
+    plt.xlim(0, 100); plt.ylim(0, 100)
+    plt.title('points'); plt.xlabel('x'); plt.ylabel('y')
+    plt.show()
