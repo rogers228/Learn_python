@@ -10,7 +10,6 @@ class Myfuncs():
     def func3(self, a, b, c):
         return (a + b) * c
 
-
 def tes1():
     ms = Myfuncs()
     dic_args ={'func': 'func2', 'a':2, 'b':5}
