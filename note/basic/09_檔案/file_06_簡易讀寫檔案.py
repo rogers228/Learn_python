@@ -15,10 +15,7 @@ html_file= open(f,"w")
 html_file.write(html_str)
 html_file.close()
 
-
 print('finish')
-
-
 
 
 with open("test.html", "r", encoding='utf-8') as f:
