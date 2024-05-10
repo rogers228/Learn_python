@@ -12,3 +12,8 @@ print('本地時間為 :',atime)
 print(time.strftime("%Y/%m/%d %H:%M:%S", time.localtime()))
 
 print(time.strftime("%Y%m%d%H%M%S", time.localtime()))
+
+
+my_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
+print(my_time)
+print(len(my_time))
