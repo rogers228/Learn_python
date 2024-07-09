@@ -8,7 +8,11 @@ def main():
     args = {
         'purge': True,   # 同步清除
         'create' : True, # 資料夾不存在時則建立
-        'ignore' : ['\.git', '\.gitignore', 'config.py', 'test.*'] # 忽略
+        'ignore' : ['\.git', '\.gitignore', 'readme.md', 'push_to_webserver.py', '\*\.log', '\\__pycache__'] # 忽略
+        # \. 代表 .
+        # \* 代表 *
+        # \\ 代表 \
+        # \\__pycache__ 代表 \__pycache__ 代表 資料夾__pycache__
     }
     dirsync.sync(source_path, target_path, 'sync', **args)
     print('sync template is finish')
