@@ -5,3 +5,7 @@ def test1():
 
 if __name__ == '__main__':
     test1()
+
+
+# 使用 filter lambda 移除  另一個範例
+# lis = list(filter(lambda e: data_blog_title.get(e, None) is not None, lis_all))
