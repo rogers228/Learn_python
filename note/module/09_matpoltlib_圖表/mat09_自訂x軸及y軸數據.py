@@ -14,8 +14,8 @@ x = [10,20,30,40,50,
 #print(x)
 
 #style
-#cf = FontProperties(fname = r'C:\Windows\Fonts\mingliu.ttc') #新細明體
-cf = FontProperties(fname = r'C:\Windows\Fonts\msjhbd.ttf') #微軟正黑體 粗體
+cf = FontProperties(fname = r'C:\Windows\Fonts\mingliu.ttc') #新細明體
+# cf = FontProperties(fname = r'C:\Windows\Fonts\msjhbd.ttf') #微軟正黑體 粗體
 
 
 plt.figure() #建立圖形

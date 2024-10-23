@@ -26,9 +26,9 @@ def test1():
     data_values = table.values.tolist()
     gridview = sg.Table(values = data_values, headings = headings,
         visible_column_map = None,
-        auto_size_columns= False, # 不要自動調整欄寬 
+        auto_size_columns= False, # 不要自動調整欄寬
         col_widths=list(map(lambda x:len(x)+3, headings)), # 欄寬
-        display_row_numbers = True, # 顯示row號
+        display_row_numbers = False, # 顯示row號
         num_rows = 25, # 行數
         row_height = 20, # 行高
         alternating_row_color = 'gainsboro', # 交替顏色
@@ -46,7 +46,7 @@ def test1():
     while True:
         event, values = window.read()
         # print(event, values)
-        if event == sg.WIN_CLOSED:
+        if event in (sg.WINDOW_CLOSED, 'Exit'):
             break
         # if event == '_rowselected_':
         #     print(values['_rowselected_'][0])
