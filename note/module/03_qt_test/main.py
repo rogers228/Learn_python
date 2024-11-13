@@ -1,9 +1,9 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QMessageBox,
     QTableWidget, QTableWidgetItem,
-    QPushButton, QVBoxLayout, QWidget)
+    QPushButton, QVBoxLayout, QWidget, QMenu)
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPoint
 from PyQt5 import uic  # 用於直接載入 .ui 文件
 
 # 載入 UI 文件
@@ -24,7 +24,8 @@ class MainWindow(QMainWindow):
             }
         """)
         self.tableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignLeft) # 標題靠左
-
+        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)  # 啟用自訂右鍵選單
+        self.tableWidget.customContextMenuRequested.connect(self.on_right_click)  # 連接右鍵點擊事件
 
         # 設置表頭
         # self.tableWidget.setHorizontalHeaderLabels(["列1", "列2", "列3"])
@@ -61,6 +62,27 @@ class MainWindow(QMainWindow):
             for column_index, item in enumerate(row_data):
                 # print('row_data:', row_data)
                 tb.setItem(row_position, column_index, QTableWidgetItem(item))  # 設定單元格內容
+
+    def on_right_click(self, pos: QPoint):
+        # 獲取右鍵點擊位置的行與列
+        row = self.tableWidget.rowAt(pos.y())
+        column = self.tableWidget.columnAt(pos.x())
+        print(f"Right-clicked cell at row {row}, column {column}")
+
+        # 建立右鍵選單
+        menu = QMenu(self)
+        action1 = menu.addAction("操作 1")
+        menu.addSeparator() # 分隔線
+        action2 = menu.addAction("操作 2")
+
+        # 顯示選單，並獲取使用者選擇的選項
+        action = menu.exec_(self.tableWidget.viewport().mapToGlobal(pos))
+
+        # 根據選項執行不同動作
+        if action == action1:
+            QMessageBox.information(self, "訊息", f"在行 {row}, 列 {column} 執行操作 1")
+        elif action == action2:
+            QMessageBox.information(self, "訊息", f"在行 {row}, 列 {column} 執行操作 2")
 
 def main():
     app = QApplication(sys.argv)

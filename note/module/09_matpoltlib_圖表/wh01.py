@@ -11,7 +11,7 @@ if True:
     height_inch = w_height / dpi
     cf = FontProperties(fname = r'C:\Windows\Fonts\mingliu.ttc') #新細明體
     # https://robkerr.ai/matplotlib-color-keys/
-    colors = ['mediumblue', 'chocolate', 'green']
+    colors = ['mediumblue', 'maroon', 'green']
 
 def test1():
     caption = '鑽頭刀具中心出水孔\n孔徑-面積對照表'
@@ -44,35 +44,37 @@ def test1():
     plt.text(1.2, 3.7, "3出水孔", fontsize=11, color=colors[2], rotation=49, ha='center', va='center', fontproperties=cf)
     plt.show()
 
-def test2():
-    caption = '壓力與所需電機馬力、功率\n(60Hz 1740rpm)'
+def chart_power1():
+    rpm = 1740
+    hz = 60
+    interval = 10 # 線段的精度
+    caption = f'壓力與所需電機馬力、功率\n({hz}Hz {rpm}rpm)'
     fig, ax1 = plt.subplots(figsize=(width_inch, height_inch), dpi=dpi)
     # 主 X 軸顯示 kg/cm²
     plt.xlim(0, 70)  # 圖表 x 軸範圍
     plt.ylim(0, 5)   # 馬力的 y 軸範圍
     max_hp = 5  # 最大馬力 (HP)
-    rpm = 1740
 
     # 計算排量和對應的馬力
-    cc1 = 19; q1 = cc1 * rpm / 1000  # 排量 公升
-    max_p1 = (450 * max_hp) / q1      # 最大壓力
-    x_p1 = np.linspace(0, max_p1, 100)  # 生成壓力數據
-    hp1 = (x_p1 * q1)  / 450           # 馬力計算
+    def_max_p = lambda hp, q: (450*hp)/q        # 最大壓力 = (450*馬力)/流量
+    def_cc2l = lambda cc, rpm: cc * rpm / 1000  # 公升
 
-    cc2 = 24; q2 = cc2 * rpm / 1000
-    max_p2 = (450 * max_hp) / q2
-    x_p2 = np.linspace(0, max_p2, 100)
-    hp2 = (x_p2 * q2)  / 450
+    cc1 = 19; q1 = def_cc2l(cc1, rpm) # 排量: cc 公升
+    x_p1 = np.linspace(0, def_max_p(max_hp, q1), interval)  # 生成壓力數據 0 ~ 最大壓力
+    y_hp1 = (x_p1 * q1)  / 450           # 馬力計算
 
-    cc3 = 28; q3 = cc3 * rpm / 1000
-    max_p3 = (450 * max_hp) / q3
-    x_p3 = np.linspace(0, max_p3, 100)
-    hp3 = (x_p3 * q3)  / 450
+    cc2 = 24; q2 = def_cc2l(cc2, rpm)
+    x_p2 = np.linspace(0, def_max_p(max_hp, q2), interval)
+    y_hp2 = (x_p2 * q2)  / 450
+
+    cc3 = 28; q3 = def_cc2l(cc3, rpm)
+    x_p3 = np.linspace(0, def_max_p(max_hp, q3), interval)
+    y_hp3 = (x_p3 * q3)  / 450
 
     # 第一個 Y 軸 (馬力 HP)
-    ax1.plot(x_p1, hp1, color=colors[0], label="19cc")
-    ax1.plot(x_p2, hp2, color=colors[1], label="24cc")
-    ax1.plot(x_p3, hp3, color=colors[2], label="28cc")
+    ax1.plot(x_p1, y_hp1, color=colors[0], label="19cc")
+    ax1.plot(x_p2, y_hp2, color=colors[1], label="24cc")
+    ax1.plot(x_p3, y_hp3, color=colors[2], label="28cc")
 
     ax1.set_xlabel('出水泵最高壓力(kg/cm²)', fontproperties=cf)
     ax1.set_ylabel('電機所需出力(HP)', fontproperties=cf)
@@ -81,9 +83,9 @@ def test2():
     ax1.grid(True, which='minor', linestyle=':', linewidth=0.5)
 
     # 添加文字標籤
-    ax1.text(50, 3.9, "19cc", fontsize=11, color=colors[0], rotation=30, ha='center', va='center', fontproperties=cf)
-    ax1.text(40, 3.9, "24cc", fontsize=11, color=colors[1], rotation=38, ha='center', va='center', fontproperties=cf)
-    ax1.text(30, 3.5, "28cc", fontsize=11, color=colors[2], rotation=40, ha='center', va='center', fontproperties=cf)
+    ax1.text(50, 3.9, f"{cc1}cc ({q1}L)", fontsize=11, color=colors[0], rotation=37, ha='center', va='center')
+    ax1.text(40, 3.9, f"{cc2}cc ({q2}L)", fontsize=11, color=colors[1], rotation=42, ha='center', va='center')
+    ax1.text(30, 3.5, f"{cc3}cc ({q3}L)", fontsize=11, color=colors[2], rotation=47, ha='center', va='center')
 
     # 第二個 Y 軸 (功率 kW)
     ax2 = ax1.twinx()  # 創建第二個共享 X 軸的 Y 軸
@@ -103,11 +105,66 @@ def test2():
 
     plt.show()
 
-# def test3():
-#     caption = '壓力與排量\n(60Hz 1740rpm)'
-#     fig, ax1 = plt.subplots(figsize=(width_inch, height_inch), dpi=dpi)
+def chart_power2():
+    rpm = 1420
+    hz = 50
+    interval = 10 # 線段的精度
+    caption = f'壓力與所需電機馬力、功率\n({hz}Hz {rpm}rpm)'
+    fig, ax1 = plt.subplots(figsize=(width_inch, height_inch), dpi=dpi)
+    # 主 X 軸顯示 kg/cm²
+    plt.xlim(0, 85)  # 圖表 x 軸範圍
+    plt.ylim(0, 5)   # 馬力的 y 軸範圍
+    max_hp = 5  # 最大馬力 (HP)
 
+    # 計算排量和對應的馬力
+    def_max_p = lambda hp, q: (450*hp)/q        # 最大壓力 = (450*馬力)/流量
+    def_cc2l = lambda cc, rpm: cc * rpm / 1000  # 公升
 
+    cc1 = 19; q1 = def_cc2l(cc1, rpm) # 排量: cc 公升
+    x_p1 = np.linspace(0, def_max_p(max_hp, q1), interval)  # 生成壓力數據 0 ~ 最大壓力
+    y_hp1 = (x_p1 * q1)  / 450           # 馬力計算
+
+    cc2 = 24; q2 = def_cc2l(cc2, rpm)
+    x_p2 = np.linspace(0, def_max_p(max_hp, q2), interval)
+    y_hp2 = (x_p2 * q2)  / 450
+
+    cc3 = 28; q3 = def_cc2l(cc3, rpm)
+    x_p3 = np.linspace(0, def_max_p(max_hp, q3), interval)
+    y_hp3 = (x_p3 * q3)  / 450
+
+    # 第一個 Y 軸 (馬力 HP)
+    ax1.plot(x_p1, y_hp1, color=colors[0], label="19cc")
+    ax1.plot(x_p2, y_hp2, color=colors[1], label="24cc")
+    ax1.plot(x_p3, y_hp3, color=colors[2], label="28cc")
+
+    ax1.set_xlabel('出水泵最高壓力(kg/cm²)', fontproperties=cf)
+    ax1.set_ylabel('電機所需出力(HP)', fontproperties=cf)
+    ax1.grid(True, which='major', linestyle='-', linewidth=0.8, color='gray')
+    ax1.minorticks_on()
+    ax1.grid(True, which='minor', linestyle=':', linewidth=0.5)
+
+    # 添加文字標籤
+    ax1.text(62, 3.9, f"{cc1}cc ({q1}L)", fontsize=11, color=colors[0], rotation=37, ha='center', va='center')
+    ax1.text(49, 3.9, f"{cc2}cc ({q2}L)", fontsize=11, color=colors[1], rotation=42, ha='center', va='center')
+    ax1.text(37, 3.5, f"{cc3}cc ({q3}L)", fontsize=11, color=colors[2], rotation=47, ha='center', va='center')
+
+    # 第二個 Y 軸 (功率 kW)
+    ax2 = ax1.twinx()  # 創建第二個共享 X 軸的 Y 軸
+    ax2.set_ylim(0, 5 * 0.7457)  # 將最大馬力轉換為 kW
+    ax2.set_ylabel('電機所需出力(kW)', fontproperties=cf)
+
+    # 第二個 X 軸 (壓力 MPa)
+    ax3 = ax1.twiny()  # 創建第二個共享 X 軸
+    ax3.set_xlim(ax1.get_xlim())  # 保持 X 軸對應範圍相同
+    ax3.set_xlabel('出水泵最高壓力(MPa)', fontproperties=cf)
+    ax3.set_xticks(ax1.get_xticks())  # 保持刻度相同
+    ax3.set_xticklabels([f'{x * 0.0980665:.2f}' for x in ax1.get_xticks()])  # 轉換 kg/cm² 為 MPa
+
+    # 添加圖表標題
+    plt.figtext(0.136, 0.798, caption, ha="left", fontsize=11, fontproperties=cf,
+        bbox=dict(facecolor='lightgray', edgecolor='none'))
+
+    plt.show()
 
 if __name__ == '__main__':
-    test2()
+    chart_power2()

@@ -21,6 +21,8 @@ df_w = df.loc[(df['製造類別'] == 'S')|(df['製造類別'] == 's')] # 篩選
 # ~ 代表not !
 df[~df.country.isin(countries_to_keep)]
 
+df.loc[(~pd.isna(df['日期']))] # 非空白
+
 #以index篩選
 lis_match_index = [1,2,5,8]
 df_w = df_w.take(lis_match_index)
@@ -35,6 +37,8 @@ df_w.iloc[[0]]['wh02']
 df_w = df[df['工程屬性'].notna()] # 工程屬性不為空白者
 
 
+
+
 # index 取欄位值
 drawno = df.loc[df.index == gid]['圖號'].item()
 
@@ -43,4 +47,6 @@ sf['圖號'].values[0]
 
 or
 df.loc[gid, '圖號']
+
+
 
