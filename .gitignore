@@ -1,2 +1,5 @@
 /test*
 msedgedriver.exe
+*.ttf
+*.pkl
+*.pdf
