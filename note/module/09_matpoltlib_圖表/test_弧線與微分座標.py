@@ -16,7 +16,7 @@ def test2():
     g_r = 10 # radius
     g_r_num = 10
     ps = []
-    
+
     line = [(50,0),(0,0),(0,50),(0+g_bw,50),(0+g_bw,g_bw+g_r)]; line.pop(); ps += line
     # print(line)
     arc = calculate_points_on_arc(
@@ -25,7 +25,7 @@ def test2():
     start_angle = 180,
     end_angle = 180+90,
     num_points = g_r_num); arc.pop(); ps += arc
-    
+
     line = [(g_bw+g_r, g_bw),(50,g_bw),(100-g_bw-g_r,g_bw)]; line.pop(); ps += line
 
     arc = calculate_points_on_arc(
@@ -45,4 +45,4 @@ def test2():
 
 
 if __name__ == '__main__':
-    test2()
+    test1()
