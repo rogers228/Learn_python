@@ -29,8 +29,8 @@ def calculate_angle_and_direction(A, B):
         clockwise_angle = 2 * np.pi - angle_rad
 
     return {
-        # "cw_angle_rad": clockwise_angle,
-        # "ccw_angle_rad": counterclockwise_angle,
+        "cw_angle_rad": clockwise_angle,
+        "ccw_angle_rad": counterclockwise_angle,
         "cw_angle_deg": np.degrees(clockwise_angle),
         "ccw_angle_deg": np.degrees(counterclockwise_angle),
     }
@@ -38,10 +38,17 @@ def calculate_angle_and_direction(A, B):
 def test1():
     A = (33, 20)  # 向量 A
     B = (-18, -20)  # 向量 B
-
     result = calculate_angle_and_direction(A, B)
     print(result)
 
 
+def test2():
+    B = (-18, -20)  # 向量 B
+
+    # (1, 0) 代表水平向右向量
+    result = calculate_angle_and_direction((1,0), B)
+    print(result)
+
+
 if __name__ == '__main__':
-    test1()
+    test2()
