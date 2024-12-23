@@ -339,7 +339,7 @@ def test6():
     plt.show()
 
 if __name__ == '__main__':
-    test6()
+    test4()
 
 
 
