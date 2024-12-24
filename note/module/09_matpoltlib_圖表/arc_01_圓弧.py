@@ -178,8 +178,8 @@ def test3():
 def test4():
     # 未完成
     plt.title('繪製圓弧 已知起點、終點、半徑、方向')
-    start_point = (10, 10)  # 起點
-    end_point = (90, 80)    # 終點
+    start_point = (10, 50)  # 起點
+    end_point = (90, 51)    # 終點
     radius = 80            # 圓弧半徑
     direction = 'cw'       # 方向: cw順時針 | ccw逆時針
 

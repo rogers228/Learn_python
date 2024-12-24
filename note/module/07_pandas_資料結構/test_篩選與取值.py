@@ -49,4 +49,11 @@ or
 df.loc[gid, '圖號']
 
 
-
+# 當 Excel提醒日期 有資料時  判斷type正確為 datetime64
+#                 無資料時  判斷type    為 object
+if pd.api.types.is_datetime64_any_dtype(df['提醒日期']):
+    print("提醒日期是 datetime64 類型")
+    df_w = df.loc[(~pd.isna(df['提醒日期']))] # 篩選1 提醒日期(時間類型) 非NaT
+else:
+    print("提醒日期是", df['提醒日期'].dtypes)
+    df_w = df[(df['提醒日期'].str.strip() != '')]
