@@ -27,6 +27,8 @@ class MainWindow(QMainWindow):
         self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)  # 啟用自訂右鍵選單
         self.tableWidget.customContextMenuRequested.connect(self.on_right_click)  # 連接右鍵點擊事件
 
+        # event
+
         # 設置表頭
         # self.tableWidget.setHorizontalHeaderLabels(["列1", "列2", "列3"])
         self.tableWidget.cellClicked.connect(self.on_cell_clicked)
@@ -35,6 +37,10 @@ class MainWindow(QMainWindow):
         self.button = self.findChild(QPushButton, 'pushButton')  # 'pushButton' 是按鈕在 .ui 文件中的名稱
         self.button.clicked.connect(self.on_button_clicked)  # 連接按鈕功能
 
+        self.lineEdit.returnPressed.connect(self.on_enter_pressed)
+
+        # 動態更新選單內容
+        self.update_combo_box()
     def on_button_clicked(self):
         # 按鈕的點擊事件功能
         input_text = self.lineEdit.text()
@@ -45,9 +51,14 @@ class MainWindow(QMainWindow):
             ["資料7", "資料8", "資料9"],
         ]
         self.update_table(data)
+        self.stackedWidget.setCurrentIndex(1)
 
     def on_cell_clicked(self, row, column):
         print(f"Clicked cell at row {row}, column {column}")
+
+    def on_enter_pressed(self):
+        text = self.lineEdit.text()  # 取得 LineEdit 內的文字
+        print(f"使用者輸入的文字是: {text}")
 
     def update_table(self, data):
         tb = self.tableWidget
@@ -83,6 +94,17 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, "訊息", f"在行 {row}, 列 {column} 執行操作 1")
         elif action == action2:
             QMessageBox.information(self, "訊息", f"在行 {row}, 列 {column} 執行操作 2")
+
+    def update_combo_box(self):
+        self.comboBox.clear() # 清空現有選單內容
+        options = ["選項 1", "選項 2", "選項 3"]
+        self.comboBox.addItems(options)  # 批量新增選項
+        self.comboBox.addItem("單個新增選項") # 單個新增選項（示範）
+        self.comboBox.setCurrentIndex(0) # 設定預設選中項目
+        self.comboBox.currentIndexChanged.connect(self.on_combobox_changed)
+
+    def on_combobox_changed(self, index):
+        print(f"選中的索引：{index}, 選中的內容：{self.comboBox.itemText(index)}")
 
 def main():
     app = QApplication(sys.argv)

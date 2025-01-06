@@ -20,28 +20,51 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>280</y>
-      <width>151</width>
-      <height>31</height>
+      <x>20</x>
+      <y>260</y>
+      <width>91</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>新細明體</family>
+      <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
     </property>
     <property name="toolTipDuration">
      <number>-3</number>
     </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
     <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>ok</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>security.png</normaloff>security.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="shortcut">
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
@@ -50,18 +73,30 @@
       <x>20</x>
       <y>30</y>
       <width>113</width>
-      <height>20</height>
+      <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>130</x>
       <y>30</y>
       <width>113</width>
-      <height>20</height>
+      <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
@@ -88,6 +123,112 @@
     <attribute name="verticalHeaderDefaultSectionSize">
      <number>24</number>
     </attribute>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>30</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::PreventContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black; /* 邊框粗細與顏色 */
+    padding: 2px;           /* 內邊距 */
+}</string>
+    </property>
+    <property name="text">
+     <string>This Label</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>260</y>
+      <width>361</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>340</y>
+      <width>281</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>47</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>stack1</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>47</width>
+        <height>12</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>stack2</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
