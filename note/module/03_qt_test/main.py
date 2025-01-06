@@ -1,4 +1,4 @@
-import sys
+import sys, os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QMessageBox,
     QTableWidget, QTableWidgetItem,
     QPushButton, QVBoxLayout, QWidget, QMenu)
@@ -10,7 +10,8 @@ from PyQt5 import uic  # 用於直接載入 .ui 文件
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        uic.loadUi('test.ui', self)  # 載入 .ui 文件
+        # print(os.path.join(os.path.dirname(__file__),'test.ui'))
+        uic.loadUi(os.path.join(os.path.dirname(__file__),'test.ui'), self)  # 載入 .ui 文件
 
         # 直接訪問已經存在的 QTableWidget
         # self.tableWidget.setAlternatingRowColors(True) # 啟用隔行顏色
