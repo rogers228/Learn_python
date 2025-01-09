@@ -43,6 +43,7 @@ class MainWindow(QMainWindow):
         # 動態更新選單內容
         self.update_combo_box()
     def on_button_clicked(self):
+        print('on_button_clicked')
         # 按鈕的點擊事件功能
         input_text = self.lineEdit.text()
         QMessageBox.information(self, "訊息", f"您輸入的是{input_text}")
@@ -69,7 +70,7 @@ class MainWindow(QMainWindow):
         # 更新 QTableWidget 的資料
         for row_data in data:
             row_position = tb.rowCount()  # 獲取目前行數
-            print('row_position:', row_position)
+            # print('row_position:', row_position)
             tb.insertRow(row_position)  # 插入新行
             for column_index, item in enumerate(row_data):
                 # print('row_data:', row_data)
