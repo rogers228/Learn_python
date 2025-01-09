@@ -1,2 +1,2 @@
 # Learn_python
-學習python的練習
+學習 python
