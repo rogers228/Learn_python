@@ -8,6 +8,9 @@ def main():
         'purge': True,   # 同步清除
         'create' : True, # 資料夾不存在時則建立
 
+        # dirsync的 ignore 是使用正則表達式
+        # git 的 .gitignore 非正則表達式  不要混淆
+
         # 在windows平台下使用python  r'' 來避免轉義符\ 與windows路徑\的混亂
         # r'正則表達式'  使用r 可以讓正則表達式的轉義符 維持 原意 即正則
 
