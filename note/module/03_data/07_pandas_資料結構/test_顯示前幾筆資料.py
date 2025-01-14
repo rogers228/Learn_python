@@ -1,1 +1,0 @@
-print(df_w.head(5)) # 列出前n筆的表格
