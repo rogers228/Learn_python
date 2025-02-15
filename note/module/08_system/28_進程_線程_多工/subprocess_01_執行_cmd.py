@@ -5,6 +5,8 @@ try:
 except:
     sg.popup('執行錯誤!')
 
+# subprocess.run 會等待子進程執行完畢後，主程式才繼續。
+# 預設 check=False，即使命令執行失敗也不會報錯（可設 check=True 來強制報錯
 
 
 import os
