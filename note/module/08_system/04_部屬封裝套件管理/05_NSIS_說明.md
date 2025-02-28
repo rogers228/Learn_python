@@ -19,15 +19,23 @@ https://www.azotaiwan.com/_dl_rC5CFd3nVq/NSISPortableUnicode_2.4.6.5_azo.exe.htm
 ## 建立 installer.nsi
 
 ```
-!define InstallDir "C:\project_env"  ; 指定解壓縮路徑
+!define InstallDir "C:\Users\USER\Desktop\work_c\project_env"  ; 指定解壓縮路徑
+!define SourceFolder "C:\Users\USER\Desktop\Test\project_env"  ; 打包來源
 
-Outfile "MyInstaller.exe"  ; 輸出的 SFX 檔案
+
+Outfile "MyInstaller.exe"   ; 輸出自解壓縮exe
 InstallDir "${InstallDir}"  ; 設定預設解壓縮目錄
-RequestExecutionLevel user  ; 不要求管理員權限
+
+RequestExecutionLevel admin ; 需要管理員權限  若安裝於系統目錄
+; RequestExecutionLevel user  ; 不要求管理員權限
 
 Section "解壓縮檔案"
+
+    RMDir /r "${InstallDir}"    ; 若存在則先刪除
     SetOutPath "${InstallDir}"  ; 設定解壓縮目標資料夾
-    File /r "C:\Users\USER\Desktop\Test\project_env\*"        ; 將 my_files 資料夾內所有檔案打包
+    File /r "${SourceFolder}\*"  ; 打包來源資料夾內所有檔案
+    MessageBox MB_OK "解壓縮完成！已安裝至 ${InstallDir}" ; 解壓縮完成提示
+
 SectionEnd
 
 ```
@@ -38,4 +46,9 @@ SectionEnd
 2. 點擊 Compile NSI Script
 3. 點擊 load Script 開啟，讀取後即執行，並產生MyInstaller.exe
 
+或使用cmd命令
+```
+cd /d C:\Users\USER\Desktop\Test
+"C:\NSISPortableUnicode\NSISPortable.exe" installer.nsi
+```
 
