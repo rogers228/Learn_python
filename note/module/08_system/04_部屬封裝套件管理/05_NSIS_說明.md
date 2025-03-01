@@ -20,6 +20,8 @@ https://www.azotaiwan.com/_dl_rC5CFd3nVq/NSISPortableUnicode_2.4.6.5_azo.exe.htm
 
 ```
 !define InstallDir "C:\Users\USER\Desktop\work_c\project_env"  ; 指定解壓縮路徑
+; 路徑最後應是資料夾，解壓時不存在則會建立
+
 !define SourceFolder "C:\Users\USER\Desktop\Test\project_env"  ; 打包來源
 
 
