@@ -1,4 +1,4 @@
-# NSIS
+# 使用NSIS建立自解壓縮檔為安裝程式
 
 以下已經測試成功。
 NSIS（Nullsoft Scriptable Install System）是一個免費的 Windows 安裝程式工具，可以製作 .exe
