@@ -19,9 +19,15 @@
      <rect>
       <x>30</x>
       <y>90</y>
-      <width>43</width>
-      <height>11</height>
+      <width>91</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>新細明體</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
