@@ -5,7 +5,8 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QMessageBox,
 
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5 import uic  # 用於直接載入 .ui 文件
-
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+import markdown
 from main234_ui import Ui_MainWindow
 
 class MainWindow(QMainWindow):
@@ -17,22 +18,30 @@ class MainWindow(QMainWindow):
         self.resize(487, 373)  # 設定視窗大小
         self.menu_bar()
 
+        self.ui.web_view: QWebEngineView 
+        self.load_notice()
+
+    def resizeEvent(self, event):
+        """當視窗大小變更時，調整 webView 大小"""
+        self.ui.web_view.setGeometry(0, 0, self.width(), self.height())  # 設定大小
+        event.accept()
+        
     def menu_bar(self):
         menubar = self.menuBar()
         menu_config = {
             '文件': [
-                ('&開啟', self.open_file, 'Alt+O'),  # Alt + O
-                ('&儲存', self.save_file, 'Alt+S'),  # Alt + S
+                ('開啟', self.open_file), 
+                ('儲存', self.save_file),
                 ('檢視方式', [
-                    ('&全螢幕', self.full_screen, 'Alt+F11'),  # Alt + F11
-                    ('&還原', self.restore_screen, 'Alt+F10')  # Alt + F10
+                    ('全螢幕', self.full_screen), 
+                    ('還原', self.restore_screen) 
                 ]),
                 None,  # 分隔線
-                ('&退出', self.close, 'Alt+X')  # Alt + X
+                ('退出', self.close)
             ],
-            '&Help(說明)': [  # Alt + H
-                ('檢查更新', self.check_update, 'Alt+U'),  # Alt + U
-                ('&設定', self.open_settings, 'Alt+E')  # Alt + E
+            'Help': [ 
+                ('檢查更新', self.check_update),
+                ('設定', self.open_settings)
             ]
         }
 
@@ -44,18 +53,38 @@ class MainWindow(QMainWindow):
                     menu.addSeparator()
                 elif isinstance(action[1], list):  # 子選單
                     sub_menu = menu.addMenu(action[0])
-                    for sub_action_name, sub_action_method, sub_shortcut in action[1]:
+                    for sub_action_name, sub_action_method in action[1]:
                         sub_act = QAction(sub_action_name, self)
                         sub_act.triggered.connect(sub_action_method)
-                        sub_act.setShortcut(sub_shortcut)  # 設定快捷鍵
                         sub_menu.addAction(sub_act)
                 else:
-                    action_name, action_method, shortcut = action
+                    action_name, action_method  = action
                     act = QAction(action_name, self)
                     act.triggered.connect(action_method)
-                    act.setShortcut(shortcut)  # 設定快捷鍵
                     menu.addAction(act)
 
+    def load_notice(self):
+        with open('info.md', "r", encoding="utf-8") as f:
+            md_content = f.read()
+            html_content = markdown.markdown(md_content) # markdown to html
+        print(html_content)
+        html_template = f"""
+        <html>
+        <head>
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 20px; }}
+                h1 {{ color: #2c3e50; }}
+                pre {{ background: #f4f4f4; padding: 10px; border-radius: 5px; }}
+                code {{ color: #e74c3c; }}
+            </style>
+        </head>
+        <body>
+            {html_content}
+        </body>
+        </html>
+        """
+        self.ui.web_view.setHtml(html_template)
+        # self.ui.web_view.setUrl("公告的 HTML 頁面") 來讀取網頁上的公告。
     def open_file(self):
         print("開啟文件功能")
 

@@ -14,19 +14,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(344, 309)
+        MainWindow.resize(411, 309)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 90, 91, 21))
-        font = QtGui.QFont()
-        font.setFamily("新細明體")
-        font.setPointSize(12)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
+        self.web_view = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
+        self.web_view.setGeometry(QtCore.QRect(10, 10, 391, 201))
+        self.web_view.setObjectName("web_view")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 344, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 411, 20))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -39,4 +35,4 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "TextLabel"))
+from PyQt5 import QtWebEngineWidgets
