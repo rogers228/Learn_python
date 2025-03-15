@@ -6,12 +6,15 @@ from PyQt5.QtCore import pyqtSignal, QObject, QThread
 
 # PyQt5 信號物件
 class WorkerSignals(QObject):
-    finished = pyqtSignal(str)
+    finished = pyqtSignal(dict)
 
 # 耗時任務（子進程執行）
 def long_running_task(queue):
-    time.sleep(5)  # 模擬耗時 5 秒
-    queue.put("任務完成！")  # 把結果放入 multiprocessing.Queue()
+    print('long_running_task')
+
+    time.sleep(2)  # 模擬耗時 5 秒
+    result = {'is_finished' : True}
+    queue.put(result)  # 把結果放入 multiprocessing.Queue()
 
 class MyApp(QWidget):
     def __init__(self):
@@ -57,13 +60,16 @@ class MyApp(QWidget):
         """在 QThread 中監聽 Queue，當有結果時通知 UI"""
         while True:
             if not self.queue.empty():
-                message = self.queue.get()
-                self.worker_signals.finished.emit(message)  # 透過信號更新 UI
+                result = self.queue.get()
+                self.worker_signals.finished.emit(result)  # 透過信號更新 UI
                 break
             time.sleep(0.1)  # 避免高 CPU 負載
 
-    def update_label(self, message):
-        self.label.setText(message)
+    def update_label(self, result):
+        print('update_label')
+        print(result)
+        print(type(result))
+        self.label.setText('任務完成！')
 
 if __name__ == "__main__":
     multiprocessing.freeze_support()  # Windows 需要這行
