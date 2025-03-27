@@ -13,7 +13,7 @@ if True:
     # https://robkerr.ai/matplotlib-color-keys/
     colors = ['mediumblue', 'maroon', 'green']
 
-def test1():
+def tool_1():
     caption = '鑽頭刀具中心出水孔\n孔徑-面積對照表'
     plt.figure(figsize=(width_inch, height_inch), dpi=dpi) #建立圖形
     plt.xlim(0.2, 1.6) # 圖表x界線範圍
@@ -43,6 +43,11 @@ def test1():
     plt.text(1.2, 2.5, "2出水孔", fontsize=11, color=colors[1], rotation=38, ha='center', va='center', fontproperties=cf)
     plt.text(1.2, 3.7, "3出水孔", fontsize=11, color=colors[2], rotation=49, ha='center', va='center', fontproperties=cf)
     plt.show()
+
+def tool_2():
+    caption = '刀具中心出水孔\n孔徑-壓力對照表'
+    x = np.linspace(0.0, 3.0, 10) # 生成範圍從 a 到 b 的 n 個數值
+    print(x)
 
 def chart_power1():
     rpm = 1740
@@ -167,4 +172,5 @@ def chart_power2():
     plt.show()
 
 if __name__ == '__main__':
-    chart_power2()
+    tool_2()
+    # chart_power1()
