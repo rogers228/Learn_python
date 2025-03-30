@@ -45,7 +45,7 @@ pattern = r'\d+(\.\d+)?'  # 小括號 正則使用括號 為一起搭配次數
 # 邏輯
 pattern = r'[^\S\n]'  # ^ not 相反 不是 非  (在中括號的^)
 pattern = r'a|b'      # | or 或
-
+pattern = r'["\']'    # 一個字元可以是 雙引號 或 單引號
 pattern = r'[^\s*#]\s*print'  # 尋找 print 但不要 # print
 
 
