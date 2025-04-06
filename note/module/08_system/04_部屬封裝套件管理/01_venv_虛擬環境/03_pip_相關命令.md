@@ -15,6 +15,11 @@ python -m pip list
 python -m pip install 
 ```
 
+## 更新pip
+```
+python -m pip install --upgrade pip
+```
+
 ## 導出 requirements.txt
 
 requirements.txt 是目前縮安裝的套件。
