@@ -1,8 +1,8 @@
-# 32_使用run_venv.bat來執行cmd
+# 使用cmd_venv.bat來執行cmd
 
 通常需要開啟命令視窗，移動到專案，啟動虛擬環境，輸入後續命令
 
-使用 run_venv.bat 來取代上述
+使用 cmd_venv.bat 來取代上述
 
 ```bat
 @echo off
