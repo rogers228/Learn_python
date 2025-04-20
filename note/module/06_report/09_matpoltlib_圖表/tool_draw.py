@@ -4,7 +4,7 @@ import math
 import matplotlib.pyplot as plt
 
 def circle_border(center, radius, angle_radian):
-    # 求圓上座標
+    # 求angle_radian 在圓上的直角座標x, y
     # 使用三角函數計算點的座標
     # center 圓心座標
     x = center[0] + radius * np.cos(angle_radian)
