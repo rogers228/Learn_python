@@ -18,7 +18,7 @@ https://www.azotaiwan.com/_dl_rC5CFd3nVq/NSISPortableUnicode_2.4.6.5_azo.exe.htm
 
 ## 建立 installer.nsi
 
-```
+```installer.nsi
 !define InstallDir "C:\Users\USER\Desktop\work_c\project_env"  ; 指定解壓縮路徑
 ; 路徑最後應是資料夾，解壓時不存在則會建立
 
@@ -36,6 +36,7 @@ Section "解壓縮檔案"
     RMDir /r "${InstallDir}"    ; 若存在則先刪除
     SetOutPath "${InstallDir}"  ; 設定解壓縮目標資料夾
     File /r "${SourceFolder}\*"  ; 打包來源資料夾內所有檔案
+    CreateShortcut "$DESKTOP\OSNW.lnk" "$INSTDIR\run.bat" ; 建立桌面捷徑
     MessageBox MB_OK "解壓縮完成！已安裝至 ${InstallDir}" ; 解壓縮完成提示
 
 SectionEnd
@@ -44,7 +45,7 @@ SectionEnd
 
 ## 編譯 NSIS 腳本
 
-1. 找到安裝後NISI資料夾，點兩下NSISPortable.exe
+1. C:\NSISPortableUnicode 找到安裝後NISI資料夾，點兩下NSISPortable.exe
 2. 點擊 Compile NSI Script
 3. 點擊 load Script 開啟，讀取後即執行，並產生MyInstaller.exe
 
