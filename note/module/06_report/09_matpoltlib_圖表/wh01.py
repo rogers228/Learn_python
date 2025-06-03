@@ -171,6 +171,55 @@ def chart_power2():
 
     plt.show()
 
+def chart_pq1():
+    rpm = 1740
+    hz = 60
+    interval = 10 # 線段的精度
+    caption = f'PQ曲線圖\n({hz}Hz {rpm}rpm)'
+    fig, ax1 = plt.subplots(figsize=(width_inch, height_inch), dpi=dpi)
+    plt.xlim(0, 90)   # 圖表 x 軸範圍
+    plt.ylim(0, 50)   # 馬力的 y 軸範圍
+
+    values_1 = [(0,34),(10,34),(20,34),(30, 33.26),(40, 33.26),(50, 32.4),(60, 31.6),(65, 31.2),(70, 30.77),(75, 20),(80, 11.6),(85, 5.4),(90, 0)]
+    x_p1 = [e[0] for e in values_1] # 壓力 kg/cm²
+    y_lpm1 = [e[1] for e in values_1] # 流量 LPM
+
+
+    values_2 = [(0, 25.6),(10, 25.0),(20, 23.6), (30, 21.9), (40, 17.0), (50,15.5), (60, 13.4), (65, 11.0), (70, 6.7)]
+    x_p2 = [e[0] for e in values_2]
+    y_lpm2 = [e[1] for e in values_2]
+
+
+    def_cc2l = lambda cc, rpm: cc * rpm / 1000  # 公升
+    cc1 = 19; q1 = def_cc2l(cc1, rpm) # 排量: cc 公升
+    cc2 = 24; q2 = def_cc2l(cc2, rpm) # 排量: cc 公升
+
+    ax1.plot(x_p1, y_lpm1, color=colors[0], label="19cc")
+    ax1.plot(x_p2, y_lpm2, color=colors[1], label="24cc")
+    # 添加文字標籤
+    ax1.text(40, 35, f"{cc1}cc ({q1}L)", fontsize=11, color=colors[0], rotation=-5, ha='center', va='center')
+    ax1.text(40, 25, f"{cc2}cc ({q2}L)", fontsize=11, color=colors[1], rotation=0, ha='center', va='center')
+
+
+    ax1.set_xlabel('壓力pressure(kg/cm²)', fontproperties=cf) # X軸 標題
+    ax1.set_ylabel('排量Displacement(LPM)', fontproperties=cf) # Y軸 標題
+
+    # 第二個 X 軸 (壓力 MPa)
+    ax3 = ax1.twiny()  # 創建第二個共享 X 軸
+    ax3.set_xlim(ax1.get_xlim())  # 保持 X 軸對應範圍相同
+    ax3.set_xlabel('壓力pressure(MPa)', fontproperties=cf)
+    ax3.set_xticks(ax1.get_xticks())  # 保持刻度相同
+    ax3.set_xticklabels([f'{x * 0.0980665:.2f}' for x in ax1.get_xticks()])  # 轉換 kg/cm² 為 MPa
+
+    # 添加圖表標題
+    plt.figtext(0.136, 0.798, caption, ha="left", fontsize=11, fontproperties=cf,
+        bbox=dict(facecolor='lightgray', edgecolor='none'))
+
+    ax1.grid(True, which='major', linestyle='-', linewidth=0.8, color='gray') # 主格線
+    ax1.minorticks_on() # 打開副格線
+    ax1.grid(True, which='minor', linestyle=':', linewidth=0.5) # 副格線
+    plt.show()
+
 if __name__ == '__main__':
-    tool_2()
-    # chart_power1()
+    # tool_2()
+    chart_pq1()
