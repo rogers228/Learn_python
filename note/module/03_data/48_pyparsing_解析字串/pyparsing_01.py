@@ -1,4 +1,3 @@
-```
 from pyparsing import Word, alphas, alphanums, nums, Suppress, delimitedList, QuotedString, Combine, oneOf, Group
 import json
 
@@ -92,7 +91,7 @@ def test1():
     lines = '''
     awwww allen 18  95.5 true  [joe,andy]    'Curry Rice'  ['singing','music']   ^.{18}(028|045).+  al_123
     byy   roger 20  88.0 false [jay]          Steak        ['movies','drinking'] ^.{18}(063|071).+  roger_01
-    ccc   kate  25  72.5 yes   [amy,bob,tom]  'Salad Bowl' ['reading','coding']  ^.{18}(085|100).+  kateX
+    ccc   kate  25  72.5 yes   [amy,bob,tom]  'Salad Bowl' ['reading', coding]  ^.{18}(085|100).+  kateX
 '''
 
     result = parse_lines(lines, schema)
@@ -100,12 +99,3 @@ def test1():
 
 if __name__ == "__main__":
     test1()
-```
-請使用繁體中文回答
-以上是使用python 解析lines的內容 為dict
-lines的內容是面向人類容易輸入
-
-請問 lines 目前使用空白符作為分隔
-如果要將 空白符作為分隔 改為使用 '|'作為分隔
-首先面臨到的問題是 regex_pattern 裡面會有 '|'
-該怎麼辦?
