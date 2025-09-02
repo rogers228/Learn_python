@@ -2,6 +2,11 @@ from deepmerge import Merger
 import copy
 
 # 合併規則：list 用 append，dict 用 merge，其他型別用 override
+# override
+# merge
+# append / prepend
+# append_unique / prepend_unique
+
 merger = Merger(
     [(list, ["append"]), (dict, ["merge"])], # (type, [strategy_name]) 列表
     ["override"], # 當沒有匹配 type 時使用的策略
