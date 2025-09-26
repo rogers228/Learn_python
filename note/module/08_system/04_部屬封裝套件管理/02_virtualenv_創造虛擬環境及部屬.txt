@@ -1,3 +1,5 @@
+建議使用 venv
+
 請先安裝虛擬環境virtualenv
 pip install virtualenv
 	(需連網)
@@ -11,7 +13,7 @@ cd /d path
 3.創建虛擬環境
 	目前版本會引用公用環境的模組
 	並且需要有連網，會下載其他引用
-virtualenv VENV  
+virtualenv VENV
 
 創建虛擬環境(強制不要連網)
 virtualenv --extra-search-dir=D:\06Python\test\module --never-download VENV
