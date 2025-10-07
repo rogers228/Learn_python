@@ -1,3 +1,4 @@
+import os
 from git import Repo
 
 def check_repo_needs_pull(repo_path="."):
@@ -38,10 +39,12 @@ def update_repo(repo_path="."):
 
 
 def test1():
-    check_repo_needs_pull(r"C:\Users\user\Documents\Rogers\ispc_maintain")  # 注意不同電腦所安裝的位置可能會不同
+    TARGET_DIR = os.path.join(os.environ["USERPROFILE"], "Documents", "ispc_maintain")
+    check_repo_needs_pull(TARGET_DIR)  # 注意不同電腦所安裝的位置可能會不同
 
 def test2():
-    update_repo(r"C:\Users\user\Documents\Rogers\ispc_maintain")  # 注意不同電腦所安裝的位置可能會不同
+    TARGET_DIR = os.path.join(os.environ["USERPROFILE"], "Documents", "ispc_maintain")
+    update_repo(TARGET_DIR)  # 注意不同電腦所安裝的位置可能會不同
 
 
 if __name__ == "__main__":
