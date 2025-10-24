@@ -25,6 +25,7 @@ def test1():
                 'allowed': ['a', 'b', 'c']  # 限定內容必須在 ['a', 'b', 'c'] 內
             }
         },
+        'dic' :{'type': 'dict', 'required': True}
     }
 
     # 待檢查的字典
@@ -32,6 +33,9 @@ def test1():
         'name': 'John',
         'age': 30,
         'key_lis': ['a', 'b', 'c'],
+        'dic': {
+            'key_a': 'value'
+        }
     }
 
     v = Validator(schema)
