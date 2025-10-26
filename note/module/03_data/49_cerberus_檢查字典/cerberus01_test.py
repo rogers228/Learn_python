@@ -22,7 +22,7 @@ def test1():
             'type': 'list',  # 必須是列表
             'schema': { # 巢狀內容的規則
                 'type': 'string',
-                'allowed': ['a', 'b', 'c']  # 限定內容必須在 ['a', 'b', 'c'] 內
+                'allowed': ['a', 'b', 'c', 'd']  # 限定內容必須在 ['a', 'b', 'c'] 內
             }
         },
         'dic' :{'type': 'dict', 'required': True}
@@ -32,7 +32,7 @@ def test1():
     data = {
         'name': 'John',
         'age': 30,
-        'key_lis': ['a', 'b', 'c'],
+        'key_lis': ['a', 'b', 'r'],
         'dic': {
             'key_a': 'value'
         }
