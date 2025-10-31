@@ -25,14 +25,22 @@ def test1():
                 'allowed': ['a', 'b', 'c', 'd']  # 限定內容必須在 ['a', 'b', 'c'] 內
             }
         },
-        'dic' :{'type': 'dict', 'required': True}
+        'dic' :{
+            'type': 'dict',
+            'required': True,
+            'keysrules': { # keys規則
+                'type': 'string',
+                'minlength': 5,
+                'maxlength': 5
+            }
+        }
     }
 
     # 待檢查的字典
     data = {
         'name': 'John',
         'age': 30,
-        'key_lis': ['a', 'b', 'r'],
+        'key_lis': ['a', 'b', 'c'],
         'dic': {
             'key_a': 'value'
         }
