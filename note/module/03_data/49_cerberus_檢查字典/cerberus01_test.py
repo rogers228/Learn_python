@@ -4,6 +4,7 @@ def test1():
     # 定義驗證規則
     # type 類型     : string, integer, float, boolean, list, dict
     # required 必填 : True, False
+    # unique: 唯一值(不可重複): True, False  通常用在 list
     # default 預設值 : 補充預設值  {'default': 'unknown'}
     # min 最小/ max 最大: 用於數字驗證
     # minlength 最小長度/ maxlength 最大長度: 用於文字驗證
@@ -20,6 +21,7 @@ def test1():
         'move': {'type': 'string', 'required': True, 'default': ''},
         'key_lis':{
             'type': 'list',  # 必須是列表
+            'unique': True, # 項目不可重複
             'schema': { # 巢狀內容的規則
                 'type': 'string',
                 'allowed': ['a', 'b', 'c', 'd']  # 限定內容必須在 ['a', 'b', 'c'] 內
