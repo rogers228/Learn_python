@@ -13,5 +13,6 @@ def test1():
     else:
         print("使用者選擇 No")
     root.mainloop()
+
 if __name__ == '__main__':
     test1()
