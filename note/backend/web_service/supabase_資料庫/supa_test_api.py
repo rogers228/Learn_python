@@ -20,7 +20,7 @@ def fun_hello_world(payload=None):
 
         try:
             response_json = response.json()
-            print(type(response_json))
+            # print(type(response_json)) # dict
             print(json.dumps(response_json, indent=4, ensure_ascii=False))
 
         except requests.exceptions.JSONDecodeError:
