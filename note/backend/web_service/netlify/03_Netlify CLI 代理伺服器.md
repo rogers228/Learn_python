@@ -15,6 +15,60 @@
 使用vite開發 svelte，但是啟動方式改為 'netlify dev' 就開啟了本地開發伺服器，我的理解正確嗎?
 
 
+
+## 設定本地
+
+### 本地環境
+建立 .env 檔案（確保它被 .gitignore 忽略）
+```
+# .env (會被 netlify dev 讀取)
+VITE_SUPABASE_URL="https://test"
+SUPABASE_KEY="test"
+
+```
+
+### 安裝安裝 Netlify CLI
+```
+安裝
+npm install -g netlify-cli
+檢查
+netlify --version
+```
+
+### 建立本地netlify代理伺服器
+建立 public/_redirects
+```py
+# _redirects (放置在專案根目錄)
+
+# 核心代理配置：將 /api/supabase/* 轉發到 Supabase API
+# 並注入隱藏的環境變數 (VITE_SUPABASE_URL 和 SUPABASE_KEY)
+/api/supabase/* :VITE_SUPABASE_URL/rest/v1/:splat 200! \
+  Authorization=Bearer :SUPABASE_KEY \
+  apikey=:SUPABASE_KEY
+
+# SPA 路由 fallback 規則 (必須，讓所有路徑都指向 index.html)
+/* /index.html   200
+```
+
+建立 netlify.toml 放在跟目錄
+```py
+# netlify.toml
+[dev]
+  #指定實際埠號。
+  targetPort = 5173 
+```
+
+### 執行
+
+```
+netlify dev
+```
+選擇 vite 按 enter 將執行 dev server
+
+### 退出
+Ctrl + C 將正確退出，釋放埠號
+
+
 ## 隱藏 API URL 完整範例
 
 ### 1.Netlify 環境變數設置 (伺服器端)
@@ -23,6 +77,12 @@ netlify > 專案 > Project configuration Environment variables
 設定以下 key, value
 SUPABASE_URL
 SUPABASE_SERVICE_KEY
+
+
+
+
+
+
 
 ### 2. 配置重新導向
 建立 '_redirects' 通常放在根目錄 本地與雲端皆有作用
