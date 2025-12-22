@@ -34,8 +34,10 @@ _headers 檔案
 
 
 # 長時間快取 public(是指 HTTP 回應可以被 CDN / Proxy / 瀏覽器快取)
-# 31536000 秒 = 365 天（1 年）
-# 表示 這個資源在有效期內絕對不會改變  除非使用者 Ctrl + F5 / 強制重新整理
+# 31536000秒 = 365 天（1 年）
+# immutable 表示 這個資源在有效期內絕對不會改變 
+# 除非 使用者 Ctrl + F5 / 強制重新整理
+# 或檔名變更 例如 index-C_XOMmJJ.js(編譯後hash變更)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
