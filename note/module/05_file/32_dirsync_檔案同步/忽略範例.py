@@ -26,7 +26,7 @@ def main():
         # r'\.'   代表.   \為正則表達式的轉義符
 
         'ignore' : [
-            r'\.git', r'\.gitattributes', r'\.gitignore', # 忽略 git 相關
+            r'^\.git', r'^\.gitattributes', r'^\.gitignore', # 忽略 git 相關
             r'update_to_pdm\.py', r'sublime_hide\.py',   # 忽略特定檔案
             r'.*/*readme\.md',                           # 忽略任何資料夾中的 readme.md
             r'.*/01_ui2py\.bat', r'.*/02_dev\.bat', r'.*\.ui',  # 忽略任何資料夾中的 ui
