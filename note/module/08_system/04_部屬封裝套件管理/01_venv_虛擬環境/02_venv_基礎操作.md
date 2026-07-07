@@ -17,3 +17,12 @@ venv\Scripts\activate.bat
 ```
 
 啟用成功後，命令列前面會看到 (venv)，代表已切換到虛擬環境。
+
+
+
+## 在linux建立虛擬python 環境
+
+cd ~/projects/test_linux              linux ~代表本機 路徑使用/ (右斜) 與windows不同
+python3 -m venv venv                  python3 是使用linux主要的 python3
+source venv/bin/activate              啟動虛擬環境  終端機最前面出現 (venv)
+deactivate                            退出虛擬環境
