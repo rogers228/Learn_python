@@ -34,9 +34,10 @@ nano ~/projects/test/test.txt
 
 ssh-keygen -t rsa -b 4096 -f %userprofile%\.ssh\id_rsa_nopass -N ""               建立
 
-type %userprofile%\.ssh\id_rsa.pub              輸出後複製
+type %userprofile%\.ssh\id_rsa_nopass.pub              輸出後複製
 
 
 ssh rogers@100.87.21.116          登入
 
-echo "貼上你剛剛複製的新 ssh-rsa 亂碼" > ~/.ssh/authorized_keys   寫入金鑰
+echo "貼上你剛剛複製的新 id_rsa_nopass 亂碼" > ~/.ssh/authorized_keys   寫入金鑰
+echo "貼上你剛剛複製的新 id_rsa_nopass 亂碼" >> ~/.ssh/authorized_keys    追加金鑰
