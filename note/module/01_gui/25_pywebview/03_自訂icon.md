@@ -4,7 +4,7 @@
 
 ```
 ; AHK 建立捷徑語法範例
-FileCreateShortcut, "C:\YourApp\python.exe", "C:\Users\Desktop\我的桌面應用.lnk", "C:\YourApp", "main.py", "應用程式說明", "C:\YourApp\assets\logo.ico"
+FileCreateShortcut, "C:\python_venv_312\python.exe", "C:\Users\Desktop\我的桌面應用.lnk", "C:\YourApp", "main.py", "應用程式說明", "C:\YourApp\assets\logo.ico"
 ```
 只要使用者是透過這個捷徑開啟應用程式，Windows 工作列與視窗就會完美顯示你的專屬 Logo！
 
